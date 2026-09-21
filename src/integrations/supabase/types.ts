@@ -882,7 +882,7 @@ export type Database = {
             foreignKeyName: "topic_progress_topic_id_fkey"
             columns: ["topic_id"]
             isOneToOne: false
-            referencedRelation: "topics"
+            referencedRelation: "syllabus_topics"
             referencedColumns: ["id"]
           },
         ]
