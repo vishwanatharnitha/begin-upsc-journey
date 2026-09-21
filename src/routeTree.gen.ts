@@ -16,7 +16,7 @@ import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as SignupRouteImport } from './routes/signup'
-import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
+import { Route as AuthenticatedAdminRouteRouteImport } from './routes/_authenticated/admin/route'
 import { Route as AuthenticatedAiAssistantRouteImport } from './routes/_authenticated/ai-assistant'
 import { Route as AuthenticatedAnalyticsRouteImport } from './routes/_authenticated/analytics'
 import { Route as AuthenticatedBookmarksRouteImport } from './routes/_authenticated/bookmarks'
@@ -33,6 +33,7 @@ import { Route as AuthenticatedSearchRouteImport } from './routes/_authenticated
 import { Route as AuthenticatedSubjectsRouteImport } from './routes/_authenticated/subjects'
 import { Route as AuthenticatedSyllabusRouteImport } from './routes/_authenticated/syllabus'
 import { Route as AuthenticatedTestsRouteImport } from './routes/_authenticated/tests'
+import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin.index'
 import { Route as AuthenticatedAdminCurrentAffairsRouteImport } from './routes/_authenticated/admin/current-affairs'
 import { Route as AuthenticatedAdminMainsRouteImport } from './routes/_authenticated/admin/mains'
 import { Route as AuthenticatedAdminQuestionsRouteImport } from './routes/_authenticated/admin/questions'
@@ -83,7 +84,7 @@ const SignupRoute = SignupRouteImport.update({
   path: '/signup',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
+const AuthenticatedAdminRouteRoute = AuthenticatedAdminRouteRouteImport.update({
   id: '/admin',
   path: '/admin',
   getParentRoute: () => AuthenticatedRouteRoute,
@@ -170,50 +171,55 @@ const AuthenticatedTestsRoute = AuthenticatedTestsRouteImport.update({
   path: '/tests',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedAdminIndexRoute = AuthenticatedAdminIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AuthenticatedAdminRouteRoute,
+} as any)
 const AuthenticatedAdminCurrentAffairsRoute =
   AuthenticatedAdminCurrentAffairsRouteImport.update({
     id: '/current-affairs',
     path: '/current-affairs',
-    getParentRoute: () => AuthenticatedAdminRoute,
+    getParentRoute: () => AuthenticatedAdminRouteRoute,
   } as any)
 const AuthenticatedAdminMainsRoute = AuthenticatedAdminMainsRouteImport.update({
   id: '/mains',
   path: '/mains',
-  getParentRoute: () => AuthenticatedAdminRoute,
+  getParentRoute: () => AuthenticatedAdminRouteRoute,
 } as any)
 const AuthenticatedAdminQuestionsRoute =
   AuthenticatedAdminQuestionsRouteImport.update({
     id: '/questions',
     path: '/questions',
-    getParentRoute: () => AuthenticatedAdminRoute,
+    getParentRoute: () => AuthenticatedAdminRouteRoute,
   } as any)
 const AuthenticatedAdminResourcesRoute =
   AuthenticatedAdminResourcesRouteImport.update({
     id: '/resources',
     path: '/resources',
-    getParentRoute: () => AuthenticatedAdminRoute,
+    getParentRoute: () => AuthenticatedAdminRouteRoute,
   } as any)
 const AuthenticatedAdminSettingsRoute =
   AuthenticatedAdminSettingsRouteImport.update({
     id: '/settings',
     path: '/settings',
-    getParentRoute: () => AuthenticatedAdminRoute,
+    getParentRoute: () => AuthenticatedAdminRouteRoute,
   } as any)
 const AuthenticatedAdminSyllabusRoute =
   AuthenticatedAdminSyllabusRouteImport.update({
     id: '/syllabus',
     path: '/syllabus',
-    getParentRoute: () => AuthenticatedAdminRoute,
+    getParentRoute: () => AuthenticatedAdminRouteRoute,
   } as any)
 const AuthenticatedAdminTestsRoute = AuthenticatedAdminTestsRouteImport.update({
   id: '/tests',
   path: '/tests',
-  getParentRoute: () => AuthenticatedAdminRoute,
+  getParentRoute: () => AuthenticatedAdminRouteRoute,
 } as any)
 const AuthenticatedAdminUsersRoute = AuthenticatedAdminUsersRouteImport.update({
   id: '/users',
   path: '/users',
-  getParentRoute: () => AuthenticatedAdminRoute,
+  getParentRoute: () => AuthenticatedAdminRouteRoute,
 } as any)
 const AuthenticatedCurrentAffairsIdRoute =
   AuthenticatedCurrentAffairsIdRouteImport.update({
@@ -260,7 +266,7 @@ export interface FileRoutesByFullPath {
   '/login': typeof LoginRoute
   '/reset-password': typeof ResetPasswordRoute
   '/signup': typeof SignupRoute
-  '/admin': typeof AuthenticatedAdminRouteWithChildren
+  '/admin': typeof AuthenticatedAdminRouteRouteWithChildren
   '/ai-assistant': typeof AuthenticatedAiAssistantRoute
   '/analytics': typeof AuthenticatedAnalyticsRoute
   '/bookmarks': typeof AuthenticatedBookmarksRoute
@@ -291,6 +297,7 @@ export interface FileRoutesByFullPath {
   '/subjects/$id': typeof AuthenticatedSubjectsIdRoute
   '/tests/$id': typeof AuthenticatedTestsIdRouteWithChildren
   '/topics/$id': typeof AuthenticatedTopicsIdRoute
+  '/admin/': typeof AuthenticatedAdminIndexRoute
   '/tests/$id/result': typeof AuthenticatedTestsIdResultRoute
 }
 export interface FileRoutesByTo {
@@ -300,7 +307,6 @@ export interface FileRoutesByTo {
   '/login': typeof LoginRoute
   '/reset-password': typeof ResetPasswordRoute
   '/signup': typeof SignupRoute
-  '/admin': typeof AuthenticatedAdminRouteWithChildren
   '/ai-assistant': typeof AuthenticatedAiAssistantRoute
   '/analytics': typeof AuthenticatedAnalyticsRoute
   '/bookmarks': typeof AuthenticatedBookmarksRoute
@@ -331,6 +337,7 @@ export interface FileRoutesByTo {
   '/subjects/$id': typeof AuthenticatedSubjectsIdRoute
   '/tests/$id': typeof AuthenticatedTestsIdRouteWithChildren
   '/topics/$id': typeof AuthenticatedTopicsIdRoute
+  '/admin': typeof AuthenticatedAdminIndexRoute
   '/tests/$id/result': typeof AuthenticatedTestsIdResultRoute
 }
 export interface FileRoutesById {
@@ -342,7 +349,7 @@ export interface FileRoutesById {
   '/login': typeof LoginRoute
   '/reset-password': typeof ResetPasswordRoute
   '/signup': typeof SignupRoute
-  '/_authenticated/admin': typeof AuthenticatedAdminRouteWithChildren
+  '/_authenticated/admin': typeof AuthenticatedAdminRouteRouteWithChildren
   '/_authenticated/ai-assistant': typeof AuthenticatedAiAssistantRoute
   '/_authenticated/analytics': typeof AuthenticatedAnalyticsRoute
   '/_authenticated/bookmarks': typeof AuthenticatedBookmarksRoute
@@ -373,6 +380,7 @@ export interface FileRoutesById {
   '/_authenticated/subjects/$id': typeof AuthenticatedSubjectsIdRoute
   '/_authenticated/tests/$id': typeof AuthenticatedTestsIdRouteWithChildren
   '/_authenticated/topics/$id': typeof AuthenticatedTopicsIdRoute
+  '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
   '/_authenticated/tests/$id/result': typeof AuthenticatedTestsIdResultRoute
 }
 export interface FileRouteTypes {
@@ -415,6 +423,7 @@ export interface FileRouteTypes {
     | '/subjects/$id'
     | '/tests/$id'
     | '/topics/$id'
+    | '/admin/'
     | '/tests/$id/result'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -424,7 +433,6 @@ export interface FileRouteTypes {
     | '/login'
     | '/reset-password'
     | '/signup'
-    | '/admin'
     | '/ai-assistant'
     | '/analytics'
     | '/bookmarks'
@@ -455,6 +463,7 @@ export interface FileRouteTypes {
     | '/subjects/$id'
     | '/tests/$id'
     | '/topics/$id'
+    | '/admin'
     | '/tests/$id/result'
   id:
     | '__root__'
@@ -496,6 +505,7 @@ export interface FileRouteTypes {
     | '/_authenticated/subjects/$id'
     | '/_authenticated/tests/$id'
     | '/_authenticated/topics/$id'
+    | '/_authenticated/admin/'
     | '/_authenticated/tests/$id/result'
   fileRoutesById: FileRoutesById
 }
@@ -564,7 +574,7 @@ declare module '@tanstack/react-router' {
       id: '/_authenticated/admin'
       path: '/admin'
       fullPath: '/admin'
-      preLoaderRoute: typeof AuthenticatedAdminRouteImport
+      preLoaderRoute: typeof AuthenticatedAdminRouteRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/ai-assistant': {
@@ -679,61 +689,68 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedTestsRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/admin/': {
+      id: '/_authenticated/admin/'
+      path: '/'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AuthenticatedAdminIndexRouteImport
+      parentRoute: typeof AuthenticatedAdminRouteRoute
+    }
     '/_authenticated/admin/current-affairs': {
       id: '/_authenticated/admin/current-affairs'
       path: '/current-affairs'
       fullPath: '/admin/current-affairs'
       preLoaderRoute: typeof AuthenticatedAdminCurrentAffairsRouteImport
-      parentRoute: typeof AuthenticatedAdminRoute
+      parentRoute: typeof AuthenticatedAdminRouteRoute
     }
     '/_authenticated/admin/mains': {
       id: '/_authenticated/admin/mains'
       path: '/mains'
       fullPath: '/admin/mains'
       preLoaderRoute: typeof AuthenticatedAdminMainsRouteImport
-      parentRoute: typeof AuthenticatedAdminRoute
+      parentRoute: typeof AuthenticatedAdminRouteRoute
     }
     '/_authenticated/admin/questions': {
       id: '/_authenticated/admin/questions'
       path: '/questions'
       fullPath: '/admin/questions'
       preLoaderRoute: typeof AuthenticatedAdminQuestionsRouteImport
-      parentRoute: typeof AuthenticatedAdminRoute
+      parentRoute: typeof AuthenticatedAdminRouteRoute
     }
     '/_authenticated/admin/resources': {
       id: '/_authenticated/admin/resources'
       path: '/resources'
       fullPath: '/admin/resources'
       preLoaderRoute: typeof AuthenticatedAdminResourcesRouteImport
-      parentRoute: typeof AuthenticatedAdminRoute
+      parentRoute: typeof AuthenticatedAdminRouteRoute
     }
     '/_authenticated/admin/settings': {
       id: '/_authenticated/admin/settings'
       path: '/settings'
       fullPath: '/admin/settings'
       preLoaderRoute: typeof AuthenticatedAdminSettingsRouteImport
-      parentRoute: typeof AuthenticatedAdminRoute
+      parentRoute: typeof AuthenticatedAdminRouteRoute
     }
     '/_authenticated/admin/syllabus': {
       id: '/_authenticated/admin/syllabus'
       path: '/syllabus'
       fullPath: '/admin/syllabus'
       preLoaderRoute: typeof AuthenticatedAdminSyllabusRouteImport
-      parentRoute: typeof AuthenticatedAdminRoute
+      parentRoute: typeof AuthenticatedAdminRouteRoute
     }
     '/_authenticated/admin/tests': {
       id: '/_authenticated/admin/tests'
       path: '/tests'
       fullPath: '/admin/tests'
       preLoaderRoute: typeof AuthenticatedAdminTestsRouteImport
-      parentRoute: typeof AuthenticatedAdminRoute
+      parentRoute: typeof AuthenticatedAdminRouteRoute
     }
     '/_authenticated/admin/users': {
       id: '/_authenticated/admin/users'
       path: '/users'
       fullPath: '/admin/users'
       preLoaderRoute: typeof AuthenticatedAdminUsersRouteImport
-      parentRoute: typeof AuthenticatedAdminRoute
+      parentRoute: typeof AuthenticatedAdminRouteRoute
     }
     '/_authenticated/current-affairs/$id': {
       id: '/_authenticated/current-affairs/$id'
@@ -787,7 +804,7 @@ declare module '@tanstack/react-router' {
   }
 }
 
-interface AuthenticatedAdminRouteChildren {
+interface AuthenticatedAdminRouteRouteChildren {
   AuthenticatedAdminCurrentAffairsRoute: typeof AuthenticatedAdminCurrentAffairsRoute
   AuthenticatedAdminMainsRoute: typeof AuthenticatedAdminMainsRoute
   AuthenticatedAdminQuestionsRoute: typeof AuthenticatedAdminQuestionsRoute
@@ -796,21 +813,27 @@ interface AuthenticatedAdminRouteChildren {
   AuthenticatedAdminSyllabusRoute: typeof AuthenticatedAdminSyllabusRoute
   AuthenticatedAdminTestsRoute: typeof AuthenticatedAdminTestsRoute
   AuthenticatedAdminUsersRoute: typeof AuthenticatedAdminUsersRoute
+  AuthenticatedAdminIndexRoute: typeof AuthenticatedAdminIndexRoute
 }
 
-const AuthenticatedAdminRouteChildren: AuthenticatedAdminRouteChildren = {
-  AuthenticatedAdminCurrentAffairsRoute: AuthenticatedAdminCurrentAffairsRoute,
-  AuthenticatedAdminMainsRoute: AuthenticatedAdminMainsRoute,
-  AuthenticatedAdminQuestionsRoute: AuthenticatedAdminQuestionsRoute,
-  AuthenticatedAdminResourcesRoute: AuthenticatedAdminResourcesRoute,
-  AuthenticatedAdminSettingsRoute: AuthenticatedAdminSettingsRoute,
-  AuthenticatedAdminSyllabusRoute: AuthenticatedAdminSyllabusRoute,
-  AuthenticatedAdminTestsRoute: AuthenticatedAdminTestsRoute,
-  AuthenticatedAdminUsersRoute: AuthenticatedAdminUsersRoute,
-}
+const AuthenticatedAdminRouteRouteChildren: AuthenticatedAdminRouteRouteChildren =
+  {
+    AuthenticatedAdminCurrentAffairsRoute:
+      AuthenticatedAdminCurrentAffairsRoute,
+    AuthenticatedAdminMainsRoute: AuthenticatedAdminMainsRoute,
+    AuthenticatedAdminQuestionsRoute: AuthenticatedAdminQuestionsRoute,
+    AuthenticatedAdminResourcesRoute: AuthenticatedAdminResourcesRoute,
+    AuthenticatedAdminSettingsRoute: AuthenticatedAdminSettingsRoute,
+    AuthenticatedAdminSyllabusRoute: AuthenticatedAdminSyllabusRoute,
+    AuthenticatedAdminTestsRoute: AuthenticatedAdminTestsRoute,
+    AuthenticatedAdminUsersRoute: AuthenticatedAdminUsersRoute,
+    AuthenticatedAdminIndexRoute: AuthenticatedAdminIndexRoute,
+  }
 
-const AuthenticatedAdminRouteWithChildren =
-  AuthenticatedAdminRoute._addFileChildren(AuthenticatedAdminRouteChildren)
+const AuthenticatedAdminRouteRouteWithChildren =
+  AuthenticatedAdminRouteRoute._addFileChildren(
+    AuthenticatedAdminRouteRouteChildren,
+  )
 
 interface AuthenticatedCurrentAffairsRouteChildren {
   AuthenticatedCurrentAffairsIdRoute: typeof AuthenticatedCurrentAffairsIdRoute
@@ -886,7 +909,7 @@ const AuthenticatedTestsRouteWithChildren =
   AuthenticatedTestsRoute._addFileChildren(AuthenticatedTestsRouteChildren)
 
 interface AuthenticatedRouteRouteChildren {
-  AuthenticatedAdminRoute: typeof AuthenticatedAdminRouteWithChildren
+  AuthenticatedAdminRouteRoute: typeof AuthenticatedAdminRouteRouteWithChildren
   AuthenticatedAiAssistantRoute: typeof AuthenticatedAiAssistantRoute
   AuthenticatedAnalyticsRoute: typeof AuthenticatedAnalyticsRoute
   AuthenticatedBookmarksRoute: typeof AuthenticatedBookmarksRoute
@@ -907,7 +930,7 @@ interface AuthenticatedRouteRouteChildren {
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
-  AuthenticatedAdminRoute: AuthenticatedAdminRouteWithChildren,
+  AuthenticatedAdminRouteRoute: AuthenticatedAdminRouteRouteWithChildren,
   AuthenticatedAiAssistantRoute: AuthenticatedAiAssistantRoute,
   AuthenticatedAnalyticsRoute: AuthenticatedAnalyticsRoute,
   AuthenticatedBookmarksRoute: AuthenticatedBookmarksRoute,
