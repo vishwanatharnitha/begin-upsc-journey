@@ -16,13 +16,37 @@ import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as SignupRouteImport } from './routes/signup'
+import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
+import { Route as AuthenticatedAiAssistantRouteImport } from './routes/_authenticated/ai-assistant'
+import { Route as AuthenticatedAnalyticsRouteImport } from './routes/_authenticated/analytics'
+import { Route as AuthenticatedBookmarksRouteImport } from './routes/_authenticated/bookmarks'
+import { Route as AuthenticatedCurrentAffairsRouteImport } from './routes/_authenticated/current-affairs'
 import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
+import { Route as AuthenticatedMainsRouteImport } from './routes/_authenticated/mains'
 import { Route as AuthenticatedNotesRouteImport } from './routes/_authenticated/notes'
 import { Route as AuthenticatedOnboardingRouteImport } from './routes/_authenticated/onboarding'
+import { Route as AuthenticatedPlannerRouteImport } from './routes/_authenticated/planner'
+import { Route as AuthenticatedPracticeRouteImport } from './routes/_authenticated/practice'
+import { Route as AuthenticatedProfileRouteImport } from './routes/_authenticated/profile'
+import { Route as AuthenticatedResourcesRouteImport } from './routes/_authenticated/resources'
+import { Route as AuthenticatedSearchRouteImport } from './routes/_authenticated/search'
 import { Route as AuthenticatedSubjectsRouteImport } from './routes/_authenticated/subjects'
 import { Route as AuthenticatedSyllabusRouteImport } from './routes/_authenticated/syllabus'
-import { Route as AuthenticatedSubjectsRouteImport } from './routes/_authenticated/subjects.'
-import { Route as AuthenticatedTopicsRouteImport } from './routes/_authenticated/topics.'
+import { Route as AuthenticatedTestsRouteImport } from './routes/_authenticated/tests'
+import { Route as AuthenticatedAdminCurrentAffairsRouteImport } from './routes/_authenticated/admin/current-affairs'
+import { Route as AuthenticatedAdminMainsRouteImport } from './routes/_authenticated/admin/mains'
+import { Route as AuthenticatedAdminQuestionsRouteImport } from './routes/_authenticated/admin/questions'
+import { Route as AuthenticatedAdminResourcesRouteImport } from './routes/_authenticated/admin/resources'
+import { Route as AuthenticatedAdminSettingsRouteImport } from './routes/_authenticated/admin/settings'
+import { Route as AuthenticatedAdminSyllabusRouteImport } from './routes/_authenticated/admin/syllabus'
+import { Route as AuthenticatedAdminUsersRouteImport } from './routes/_authenticated/admin/users'
+import { Route as AuthenticatedCurrentAffairsIdRouteImport } from './routes/_authenticated/current-affairs.$id'
+import { Route as AuthenticatedMainsIdRouteImport } from './routes/_authenticated/mains.$id'
+import { Route as AuthenticatedPracticeIdRouteImport } from './routes/_authenticated/practice.$id'
+import { Route as AuthenticatedSubjectsIdRouteImport } from './routes/_authenticated/subjects.$id'
+import { Route as AuthenticatedTestsIdRouteImport } from './routes/_authenticated/tests.$id'
+import { Route as AuthenticatedTopicsIdRouteImport } from './routes/_authenticated/topics.$id'
+import { Route as AuthenticatedTestsIdResultRouteImport } from './routes/_authenticated/tests.$id.result'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -58,9 +82,41 @@ const SignupRoute = SignupRouteImport.update({
   path: '/signup',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedAiAssistantRoute =
+  AuthenticatedAiAssistantRouteImport.update({
+    id: '/ai-assistant',
+    path: '/ai-assistant',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedAnalyticsRoute = AuthenticatedAnalyticsRouteImport.update({
+  id: '/analytics',
+  path: '/analytics',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedBookmarksRoute = AuthenticatedBookmarksRouteImport.update({
+  id: '/bookmarks',
+  path: '/bookmarks',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedCurrentAffairsRoute =
+  AuthenticatedCurrentAffairsRouteImport.update({
+    id: '/current-affairs',
+    path: '/current-affairs',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedMainsRoute = AuthenticatedMainsRouteImport.update({
+  id: '/mains',
+  path: '/mains',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 const AuthenticatedNotesRoute = AuthenticatedNotesRouteImport.update({
@@ -73,6 +129,31 @@ const AuthenticatedOnboardingRoute = AuthenticatedOnboardingRouteImport.update({
   path: '/onboarding',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedPlannerRoute = AuthenticatedPlannerRouteImport.update({
+  id: '/planner',
+  path: '/planner',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedPracticeRoute = AuthenticatedPracticeRouteImport.update({
+  id: '/practice',
+  path: '/practice',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedProfileRoute = AuthenticatedProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedResourcesRoute = AuthenticatedResourcesRouteImport.update({
+  id: '/resources',
+  path: '/resources',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedSearchRoute = AuthenticatedSearchRouteImport.update({
+  id: '/search',
+  path: '/search',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const AuthenticatedSubjectsRoute = AuthenticatedSubjectsRouteImport.update({
   id: '/subjects',
   path: '/subjects',
@@ -83,16 +164,88 @@ const AuthenticatedSyllabusRoute = AuthenticatedSyllabusRouteImport.update({
   path: '/syllabus',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
-const AuthenticatedSubjectsRoute = AuthenticatedSubjectsRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => AuthenticatedSubjectsRoute,
-} as any)
-const AuthenticatedTopicsRoute = AuthenticatedTopicsRouteImport.update({
-  id: '/topics/',
-  path: '/topics/',
+const AuthenticatedTestsRoute = AuthenticatedTestsRouteImport.update({
+  id: '/tests',
+  path: '/tests',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedAdminCurrentAffairsRoute =
+  AuthenticatedAdminCurrentAffairsRouteImport.update({
+    id: '/current-affairs',
+    path: '/current-affairs',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminMainsRoute = AuthenticatedAdminMainsRouteImport.update({
+  id: '/mains',
+  path: '/mains',
+  getParentRoute: () => AuthenticatedAdminRoute,
+} as any)
+const AuthenticatedAdminQuestionsRoute =
+  AuthenticatedAdminQuestionsRouteImport.update({
+    id: '/questions',
+    path: '/questions',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminResourcesRoute =
+  AuthenticatedAdminResourcesRouteImport.update({
+    id: '/resources',
+    path: '/resources',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminSettingsRoute =
+  AuthenticatedAdminSettingsRouteImport.update({
+    id: '/settings',
+    path: '/settings',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminSyllabusRoute =
+  AuthenticatedAdminSyllabusRouteImport.update({
+    id: '/syllabus',
+    path: '/syllabus',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminUsersRoute = AuthenticatedAdminUsersRouteImport.update({
+  id: '/users',
+  path: '/users',
+  getParentRoute: () => AuthenticatedAdminRoute,
+} as any)
+const AuthenticatedCurrentAffairsIdRoute =
+  AuthenticatedCurrentAffairsIdRouteImport.update({
+    id: '/$id',
+    path: '/$id',
+    getParentRoute: () => AuthenticatedCurrentAffairsRoute,
+  } as any)
+const AuthenticatedMainsIdRoute = AuthenticatedMainsIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => AuthenticatedMainsRoute,
+} as any)
+const AuthenticatedPracticeIdRoute = AuthenticatedPracticeIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => AuthenticatedPracticeRoute,
+} as any)
+const AuthenticatedSubjectsIdRoute = AuthenticatedSubjectsIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => AuthenticatedSubjectsRoute,
+} as any)
+const AuthenticatedTestsIdRoute = AuthenticatedTestsIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => AuthenticatedTestsRoute,
+} as any)
+const AuthenticatedTopicsIdRoute = AuthenticatedTopicsIdRouteImport.update({
+  id: '/topics/$id',
+  path: '/topics/$id',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedTestsIdResultRoute =
+  AuthenticatedTestsIdResultRouteImport.update({
+    id: '/result',
+    path: '/result',
+    getParentRoute: () => AuthenticatedTestsIdRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -101,13 +254,37 @@ export interface FileRoutesByFullPath {
   '/login': typeof LoginRoute
   '/reset-password': typeof ResetPasswordRoute
   '/signup': typeof SignupRoute
+  '/admin': typeof AuthenticatedAdminRouteWithChildren
+  '/ai-assistant': typeof AuthenticatedAiAssistantRoute
+  '/analytics': typeof AuthenticatedAnalyticsRoute
+  '/bookmarks': typeof AuthenticatedBookmarksRoute
+  '/current-affairs': typeof AuthenticatedCurrentAffairsRouteWithChildren
   '/dashboard': typeof AuthenticatedDashboardRoute
+  '/mains': typeof AuthenticatedMainsRouteWithChildren
   '/notes': typeof AuthenticatedNotesRoute
   '/onboarding': typeof AuthenticatedOnboardingRoute
+  '/planner': typeof AuthenticatedPlannerRoute
+  '/practice': typeof AuthenticatedPracticeRouteWithChildren
+  '/profile': typeof AuthenticatedProfileRoute
+  '/resources': typeof AuthenticatedResourcesRoute
+  '/search': typeof AuthenticatedSearchRoute
   '/subjects': typeof AuthenticatedSubjectsRouteWithChildren
   '/syllabus': typeof AuthenticatedSyllabusRoute
-  '/subjects/': typeof AuthenticatedSubjectsRoute
-  '/topics/': typeof AuthenticatedTopicsRoute
+  '/tests': typeof AuthenticatedTestsRouteWithChildren
+  '/admin/current-affairs': typeof AuthenticatedAdminCurrentAffairsRoute
+  '/admin/mains': typeof AuthenticatedAdminMainsRoute
+  '/admin/questions': typeof AuthenticatedAdminQuestionsRoute
+  '/admin/resources': typeof AuthenticatedAdminResourcesRoute
+  '/admin/settings': typeof AuthenticatedAdminSettingsRoute
+  '/admin/syllabus': typeof AuthenticatedAdminSyllabusRoute
+  '/admin/users': typeof AuthenticatedAdminUsersRoute
+  '/current-affairs/$id': typeof AuthenticatedCurrentAffairsIdRoute
+  '/mains/$id': typeof AuthenticatedMainsIdRoute
+  '/practice/$id': typeof AuthenticatedPracticeIdRoute
+  '/subjects/$id': typeof AuthenticatedSubjectsIdRoute
+  '/tests/$id': typeof AuthenticatedTestsIdRouteWithChildren
+  '/topics/$id': typeof AuthenticatedTopicsIdRoute
+  '/tests/$id/result': typeof AuthenticatedTestsIdResultRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -116,12 +293,37 @@ export interface FileRoutesByTo {
   '/login': typeof LoginRoute
   '/reset-password': typeof ResetPasswordRoute
   '/signup': typeof SignupRoute
+  '/admin': typeof AuthenticatedAdminRouteWithChildren
+  '/ai-assistant': typeof AuthenticatedAiAssistantRoute
+  '/analytics': typeof AuthenticatedAnalyticsRoute
+  '/bookmarks': typeof AuthenticatedBookmarksRoute
+  '/current-affairs': typeof AuthenticatedCurrentAffairsRouteWithChildren
   '/dashboard': typeof AuthenticatedDashboardRoute
+  '/mains': typeof AuthenticatedMainsRouteWithChildren
   '/notes': typeof AuthenticatedNotesRoute
   '/onboarding': typeof AuthenticatedOnboardingRoute
+  '/planner': typeof AuthenticatedPlannerRoute
+  '/practice': typeof AuthenticatedPracticeRouteWithChildren
+  '/profile': typeof AuthenticatedProfileRoute
+  '/resources': typeof AuthenticatedResourcesRoute
+  '/search': typeof AuthenticatedSearchRoute
+  '/subjects': typeof AuthenticatedSubjectsRouteWithChildren
   '/syllabus': typeof AuthenticatedSyllabusRoute
-  '/subjects': typeof AuthenticatedSubjectsRoute
-  '/topics': typeof AuthenticatedTopicsRoute
+  '/tests': typeof AuthenticatedTestsRouteWithChildren
+  '/admin/current-affairs': typeof AuthenticatedAdminCurrentAffairsRoute
+  '/admin/mains': typeof AuthenticatedAdminMainsRoute
+  '/admin/questions': typeof AuthenticatedAdminQuestionsRoute
+  '/admin/resources': typeof AuthenticatedAdminResourcesRoute
+  '/admin/settings': typeof AuthenticatedAdminSettingsRoute
+  '/admin/syllabus': typeof AuthenticatedAdminSyllabusRoute
+  '/admin/users': typeof AuthenticatedAdminUsersRoute
+  '/current-affairs/$id': typeof AuthenticatedCurrentAffairsIdRoute
+  '/mains/$id': typeof AuthenticatedMainsIdRoute
+  '/practice/$id': typeof AuthenticatedPracticeIdRoute
+  '/subjects/$id': typeof AuthenticatedSubjectsIdRoute
+  '/tests/$id': typeof AuthenticatedTestsIdRouteWithChildren
+  '/topics/$id': typeof AuthenticatedTopicsIdRoute
+  '/tests/$id/result': typeof AuthenticatedTestsIdResultRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -132,13 +334,37 @@ export interface FileRoutesById {
   '/login': typeof LoginRoute
   '/reset-password': typeof ResetPasswordRoute
   '/signup': typeof SignupRoute
+  '/_authenticated/admin': typeof AuthenticatedAdminRouteWithChildren
+  '/_authenticated/ai-assistant': typeof AuthenticatedAiAssistantRoute
+  '/_authenticated/analytics': typeof AuthenticatedAnalyticsRoute
+  '/_authenticated/bookmarks': typeof AuthenticatedBookmarksRoute
+  '/_authenticated/current-affairs': typeof AuthenticatedCurrentAffairsRouteWithChildren
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
+  '/_authenticated/mains': typeof AuthenticatedMainsRouteWithChildren
   '/_authenticated/notes': typeof AuthenticatedNotesRoute
   '/_authenticated/onboarding': typeof AuthenticatedOnboardingRoute
+  '/_authenticated/planner': typeof AuthenticatedPlannerRoute
+  '/_authenticated/practice': typeof AuthenticatedPracticeRouteWithChildren
+  '/_authenticated/profile': typeof AuthenticatedProfileRoute
+  '/_authenticated/resources': typeof AuthenticatedResourcesRoute
+  '/_authenticated/search': typeof AuthenticatedSearchRoute
   '/_authenticated/subjects': typeof AuthenticatedSubjectsRouteWithChildren
   '/_authenticated/syllabus': typeof AuthenticatedSyllabusRoute
-  '/_authenticated/subjects/': typeof AuthenticatedSubjectsRoute
-  '/_authenticated/topics/': typeof AuthenticatedTopicsRoute
+  '/_authenticated/tests': typeof AuthenticatedTestsRouteWithChildren
+  '/_authenticated/admin/current-affairs': typeof AuthenticatedAdminCurrentAffairsRoute
+  '/_authenticated/admin/mains': typeof AuthenticatedAdminMainsRoute
+  '/_authenticated/admin/questions': typeof AuthenticatedAdminQuestionsRoute
+  '/_authenticated/admin/resources': typeof AuthenticatedAdminResourcesRoute
+  '/_authenticated/admin/settings': typeof AuthenticatedAdminSettingsRoute
+  '/_authenticated/admin/syllabus': typeof AuthenticatedAdminSyllabusRoute
+  '/_authenticated/admin/users': typeof AuthenticatedAdminUsersRoute
+  '/_authenticated/current-affairs/$id': typeof AuthenticatedCurrentAffairsIdRoute
+  '/_authenticated/mains/$id': typeof AuthenticatedMainsIdRoute
+  '/_authenticated/practice/$id': typeof AuthenticatedPracticeIdRoute
+  '/_authenticated/subjects/$id': typeof AuthenticatedSubjectsIdRoute
+  '/_authenticated/tests/$id': typeof AuthenticatedTestsIdRouteWithChildren
+  '/_authenticated/topics/$id': typeof AuthenticatedTopicsIdRoute
+  '/_authenticated/tests/$id/result': typeof AuthenticatedTestsIdResultRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -149,13 +375,37 @@ export interface FileRouteTypes {
     | '/login'
     | '/reset-password'
     | '/signup'
+    | '/admin'
+    | '/ai-assistant'
+    | '/analytics'
+    | '/bookmarks'
+    | '/current-affairs'
     | '/dashboard'
+    | '/mains'
     | '/notes'
     | '/onboarding'
+    | '/planner'
+    | '/practice'
+    | '/profile'
+    | '/resources'
+    | '/search'
     | '/subjects'
     | '/syllabus'
-    | '/subjects/'
-    | '/topics/'
+    | '/tests'
+    | '/admin/current-affairs'
+    | '/admin/mains'
+    | '/admin/questions'
+    | '/admin/resources'
+    | '/admin/settings'
+    | '/admin/syllabus'
+    | '/admin/users'
+    | '/current-affairs/$id'
+    | '/mains/$id'
+    | '/practice/$id'
+    | '/subjects/$id'
+    | '/tests/$id'
+    | '/topics/$id'
+    | '/tests/$id/result'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -164,12 +414,37 @@ export interface FileRouteTypes {
     | '/login'
     | '/reset-password'
     | '/signup'
+    | '/admin'
+    | '/ai-assistant'
+    | '/analytics'
+    | '/bookmarks'
+    | '/current-affairs'
     | '/dashboard'
+    | '/mains'
     | '/notes'
     | '/onboarding'
-    | '/syllabus'
+    | '/planner'
+    | '/practice'
+    | '/profile'
+    | '/resources'
+    | '/search'
     | '/subjects'
-    | '/topics'
+    | '/syllabus'
+    | '/tests'
+    | '/admin/current-affairs'
+    | '/admin/mains'
+    | '/admin/questions'
+    | '/admin/resources'
+    | '/admin/settings'
+    | '/admin/syllabus'
+    | '/admin/users'
+    | '/current-affairs/$id'
+    | '/mains/$id'
+    | '/practice/$id'
+    | '/subjects/$id'
+    | '/tests/$id'
+    | '/topics/$id'
+    | '/tests/$id/result'
   id:
     | '__root__'
     | '/'
@@ -179,13 +454,37 @@ export interface FileRouteTypes {
     | '/login'
     | '/reset-password'
     | '/signup'
+    | '/_authenticated/admin'
+    | '/_authenticated/ai-assistant'
+    | '/_authenticated/analytics'
+    | '/_authenticated/bookmarks'
+    | '/_authenticated/current-affairs'
     | '/_authenticated/dashboard'
+    | '/_authenticated/mains'
     | '/_authenticated/notes'
     | '/_authenticated/onboarding'
+    | '/_authenticated/planner'
+    | '/_authenticated/practice'
+    | '/_authenticated/profile'
+    | '/_authenticated/resources'
+    | '/_authenticated/search'
     | '/_authenticated/subjects'
     | '/_authenticated/syllabus'
-    | '/_authenticated/subjects/'
-    | '/_authenticated/topics/'
+    | '/_authenticated/tests'
+    | '/_authenticated/admin/current-affairs'
+    | '/_authenticated/admin/mains'
+    | '/_authenticated/admin/questions'
+    | '/_authenticated/admin/resources'
+    | '/_authenticated/admin/settings'
+    | '/_authenticated/admin/syllabus'
+    | '/_authenticated/admin/users'
+    | '/_authenticated/current-affairs/$id'
+    | '/_authenticated/mains/$id'
+    | '/_authenticated/practice/$id'
+    | '/_authenticated/subjects/$id'
+    | '/_authenticated/tests/$id'
+    | '/_authenticated/topics/$id'
+    | '/_authenticated/tests/$id/result'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -249,11 +548,53 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SignupRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated/admin': {
+      id: '/_authenticated/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AuthenticatedAdminRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/ai-assistant': {
+      id: '/_authenticated/ai-assistant'
+      path: '/ai-assistant'
+      fullPath: '/ai-assistant'
+      preLoaderRoute: typeof AuthenticatedAiAssistantRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/analytics': {
+      id: '/_authenticated/analytics'
+      path: '/analytics'
+      fullPath: '/analytics'
+      preLoaderRoute: typeof AuthenticatedAnalyticsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/bookmarks': {
+      id: '/_authenticated/bookmarks'
+      path: '/bookmarks'
+      fullPath: '/bookmarks'
+      preLoaderRoute: typeof AuthenticatedBookmarksRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/current-affairs': {
+      id: '/_authenticated/current-affairs'
+      path: '/current-affairs'
+      fullPath: '/current-affairs'
+      preLoaderRoute: typeof AuthenticatedCurrentAffairsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/dashboard': {
       id: '/_authenticated/dashboard'
       path: '/dashboard'
       fullPath: '/dashboard'
       preLoaderRoute: typeof AuthenticatedDashboardRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/mains': {
+      id: '/_authenticated/mains'
+      path: '/mains'
+      fullPath: '/mains'
+      preLoaderRoute: typeof AuthenticatedMainsRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/notes': {
@@ -270,6 +611,41 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedOnboardingRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/planner': {
+      id: '/_authenticated/planner'
+      path: '/planner'
+      fullPath: '/planner'
+      preLoaderRoute: typeof AuthenticatedPlannerRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/practice': {
+      id: '/_authenticated/practice'
+      path: '/practice'
+      fullPath: '/practice'
+      preLoaderRoute: typeof AuthenticatedPracticeRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/profile': {
+      id: '/_authenticated/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof AuthenticatedProfileRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/resources': {
+      id: '/_authenticated/resources'
+      path: '/resources'
+      fullPath: '/resources'
+      preLoaderRoute: typeof AuthenticatedResourcesRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/search': {
+      id: '/_authenticated/search'
+      path: '/search'
+      fullPath: '/search'
+      preLoaderRoute: typeof AuthenticatedSearchRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/subjects': {
       id: '/_authenticated/subjects'
       path: '/subjects'
@@ -284,29 +660,181 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedSyllabusRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
-    '/_authenticated/subjects/': {
-      id: '/_authenticated/subjects/'
-      path: '/'
-      fullPath: '/subjects/'
-      preLoaderRoute: typeof AuthenticatedSubjectsRouteImport
+    '/_authenticated/tests': {
+      id: '/_authenticated/tests'
+      path: '/tests'
+      fullPath: '/tests'
+      preLoaderRoute: typeof AuthenticatedTestsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/admin/current-affairs': {
+      id: '/_authenticated/admin/current-affairs'
+      path: '/current-affairs'
+      fullPath: '/admin/current-affairs'
+      preLoaderRoute: typeof AuthenticatedAdminCurrentAffairsRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/mains': {
+      id: '/_authenticated/admin/mains'
+      path: '/mains'
+      fullPath: '/admin/mains'
+      preLoaderRoute: typeof AuthenticatedAdminMainsRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/questions': {
+      id: '/_authenticated/admin/questions'
+      path: '/questions'
+      fullPath: '/admin/questions'
+      preLoaderRoute: typeof AuthenticatedAdminQuestionsRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/resources': {
+      id: '/_authenticated/admin/resources'
+      path: '/resources'
+      fullPath: '/admin/resources'
+      preLoaderRoute: typeof AuthenticatedAdminResourcesRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/settings': {
+      id: '/_authenticated/admin/settings'
+      path: '/settings'
+      fullPath: '/admin/settings'
+      preLoaderRoute: typeof AuthenticatedAdminSettingsRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/syllabus': {
+      id: '/_authenticated/admin/syllabus'
+      path: '/syllabus'
+      fullPath: '/admin/syllabus'
+      preLoaderRoute: typeof AuthenticatedAdminSyllabusRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/users': {
+      id: '/_authenticated/admin/users'
+      path: '/users'
+      fullPath: '/admin/users'
+      preLoaderRoute: typeof AuthenticatedAdminUsersRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/current-affairs/$id': {
+      id: '/_authenticated/current-affairs/$id'
+      path: '/$id'
+      fullPath: '/current-affairs/$id'
+      preLoaderRoute: typeof AuthenticatedCurrentAffairsIdRouteImport
+      parentRoute: typeof AuthenticatedCurrentAffairsRoute
+    }
+    '/_authenticated/mains/$id': {
+      id: '/_authenticated/mains/$id'
+      path: '/$id'
+      fullPath: '/mains/$id'
+      preLoaderRoute: typeof AuthenticatedMainsIdRouteImport
+      parentRoute: typeof AuthenticatedMainsRoute
+    }
+    '/_authenticated/practice/$id': {
+      id: '/_authenticated/practice/$id'
+      path: '/$id'
+      fullPath: '/practice/$id'
+      preLoaderRoute: typeof AuthenticatedPracticeIdRouteImport
+      parentRoute: typeof AuthenticatedPracticeRoute
+    }
+    '/_authenticated/subjects/$id': {
+      id: '/_authenticated/subjects/$id'
+      path: '/$id'
+      fullPath: '/subjects/$id'
+      preLoaderRoute: typeof AuthenticatedSubjectsIdRouteImport
       parentRoute: typeof AuthenticatedSubjectsRoute
     }
-    '/_authenticated/topics/': {
-      id: '/_authenticated/topics/'
-      path: '/topics'
-      fullPath: '/topics/'
-      preLoaderRoute: typeof AuthenticatedTopicsRouteImport
+    '/_authenticated/tests/$id': {
+      id: '/_authenticated/tests/$id'
+      path: '/$id'
+      fullPath: '/tests/$id'
+      preLoaderRoute: typeof AuthenticatedTestsIdRouteImport
+      parentRoute: typeof AuthenticatedTestsRoute
+    }
+    '/_authenticated/topics/$id': {
+      id: '/_authenticated/topics/$id'
+      path: '/topics/$id'
+      fullPath: '/topics/$id'
+      preLoaderRoute: typeof AuthenticatedTopicsIdRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/tests/$id/result': {
+      id: '/_authenticated/tests/$id/result'
+      path: '/result'
+      fullPath: '/tests/$id/result'
+      preLoaderRoute: typeof AuthenticatedTestsIdResultRouteImport
+      parentRoute: typeof AuthenticatedTestsIdRoute
     }
   }
 }
 
+interface AuthenticatedAdminRouteChildren {
+  AuthenticatedAdminCurrentAffairsRoute: typeof AuthenticatedAdminCurrentAffairsRoute
+  AuthenticatedAdminMainsRoute: typeof AuthenticatedAdminMainsRoute
+  AuthenticatedAdminQuestionsRoute: typeof AuthenticatedAdminQuestionsRoute
+  AuthenticatedAdminResourcesRoute: typeof AuthenticatedAdminResourcesRoute
+  AuthenticatedAdminSettingsRoute: typeof AuthenticatedAdminSettingsRoute
+  AuthenticatedAdminSyllabusRoute: typeof AuthenticatedAdminSyllabusRoute
+  AuthenticatedAdminUsersRoute: typeof AuthenticatedAdminUsersRoute
+}
+
+const AuthenticatedAdminRouteChildren: AuthenticatedAdminRouteChildren = {
+  AuthenticatedAdminCurrentAffairsRoute: AuthenticatedAdminCurrentAffairsRoute,
+  AuthenticatedAdminMainsRoute: AuthenticatedAdminMainsRoute,
+  AuthenticatedAdminQuestionsRoute: AuthenticatedAdminQuestionsRoute,
+  AuthenticatedAdminResourcesRoute: AuthenticatedAdminResourcesRoute,
+  AuthenticatedAdminSettingsRoute: AuthenticatedAdminSettingsRoute,
+  AuthenticatedAdminSyllabusRoute: AuthenticatedAdminSyllabusRoute,
+  AuthenticatedAdminUsersRoute: AuthenticatedAdminUsersRoute,
+}
+
+const AuthenticatedAdminRouteWithChildren =
+  AuthenticatedAdminRoute._addFileChildren(AuthenticatedAdminRouteChildren)
+
+interface AuthenticatedCurrentAffairsRouteChildren {
+  AuthenticatedCurrentAffairsIdRoute: typeof AuthenticatedCurrentAffairsIdRoute
+}
+
+const AuthenticatedCurrentAffairsRouteChildren: AuthenticatedCurrentAffairsRouteChildren =
+  {
+    AuthenticatedCurrentAffairsIdRoute: AuthenticatedCurrentAffairsIdRoute,
+  }
+
+const AuthenticatedCurrentAffairsRouteWithChildren =
+  AuthenticatedCurrentAffairsRoute._addFileChildren(
+    AuthenticatedCurrentAffairsRouteChildren,
+  )
+
+interface AuthenticatedMainsRouteChildren {
+  AuthenticatedMainsIdRoute: typeof AuthenticatedMainsIdRoute
+}
+
+const AuthenticatedMainsRouteChildren: AuthenticatedMainsRouteChildren = {
+  AuthenticatedMainsIdRoute: AuthenticatedMainsIdRoute,
+}
+
+const AuthenticatedMainsRouteWithChildren =
+  AuthenticatedMainsRoute._addFileChildren(AuthenticatedMainsRouteChildren)
+
+interface AuthenticatedPracticeRouteChildren {
+  AuthenticatedPracticeIdRoute: typeof AuthenticatedPracticeIdRoute
+}
+
+const AuthenticatedPracticeRouteChildren: AuthenticatedPracticeRouteChildren = {
+  AuthenticatedPracticeIdRoute: AuthenticatedPracticeIdRoute,
+}
+
+const AuthenticatedPracticeRouteWithChildren =
+  AuthenticatedPracticeRoute._addFileChildren(
+    AuthenticatedPracticeRouteChildren,
+  )
+
 interface AuthenticatedSubjectsRouteChildren {
-  AuthenticatedSubjectsRoute: typeof AuthenticatedSubjectsRoute
+  AuthenticatedSubjectsIdRoute: typeof AuthenticatedSubjectsIdRoute
 }
 
 const AuthenticatedSubjectsRouteChildren: AuthenticatedSubjectsRouteChildren = {
-  AuthenticatedSubjectsRoute: AuthenticatedSubjectsRoute,
+  AuthenticatedSubjectsIdRoute: AuthenticatedSubjectsIdRoute,
 }
 
 const AuthenticatedSubjectsRouteWithChildren =
@@ -314,22 +842,69 @@ const AuthenticatedSubjectsRouteWithChildren =
     AuthenticatedSubjectsRouteChildren,
   )
 
+interface AuthenticatedTestsIdRouteChildren {
+  AuthenticatedTestsIdResultRoute: typeof AuthenticatedTestsIdResultRoute
+}
+
+const AuthenticatedTestsIdRouteChildren: AuthenticatedTestsIdRouteChildren = {
+  AuthenticatedTestsIdResultRoute: AuthenticatedTestsIdResultRoute,
+}
+
+const AuthenticatedTestsIdRouteWithChildren =
+  AuthenticatedTestsIdRoute._addFileChildren(AuthenticatedTestsIdRouteChildren)
+
+interface AuthenticatedTestsRouteChildren {
+  AuthenticatedTestsIdRoute: typeof AuthenticatedTestsIdRouteWithChildren
+}
+
+const AuthenticatedTestsRouteChildren: AuthenticatedTestsRouteChildren = {
+  AuthenticatedTestsIdRoute: AuthenticatedTestsIdRouteWithChildren,
+}
+
+const AuthenticatedTestsRouteWithChildren =
+  AuthenticatedTestsRoute._addFileChildren(AuthenticatedTestsRouteChildren)
+
 interface AuthenticatedRouteRouteChildren {
+  AuthenticatedAdminRoute: typeof AuthenticatedAdminRouteWithChildren
+  AuthenticatedAiAssistantRoute: typeof AuthenticatedAiAssistantRoute
+  AuthenticatedAnalyticsRoute: typeof AuthenticatedAnalyticsRoute
+  AuthenticatedBookmarksRoute: typeof AuthenticatedBookmarksRoute
+  AuthenticatedCurrentAffairsRoute: typeof AuthenticatedCurrentAffairsRouteWithChildren
   AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
+  AuthenticatedMainsRoute: typeof AuthenticatedMainsRouteWithChildren
   AuthenticatedNotesRoute: typeof AuthenticatedNotesRoute
   AuthenticatedOnboardingRoute: typeof AuthenticatedOnboardingRoute
+  AuthenticatedPlannerRoute: typeof AuthenticatedPlannerRoute
+  AuthenticatedPracticeRoute: typeof AuthenticatedPracticeRouteWithChildren
+  AuthenticatedProfileRoute: typeof AuthenticatedProfileRoute
+  AuthenticatedResourcesRoute: typeof AuthenticatedResourcesRoute
+  AuthenticatedSearchRoute: typeof AuthenticatedSearchRoute
   AuthenticatedSubjectsRoute: typeof AuthenticatedSubjectsRouteWithChildren
   AuthenticatedSyllabusRoute: typeof AuthenticatedSyllabusRoute
-  AuthenticatedTopicsRoute: typeof AuthenticatedTopicsRoute
+  AuthenticatedTestsRoute: typeof AuthenticatedTestsRouteWithChildren
+  AuthenticatedTopicsIdRoute: typeof AuthenticatedTopicsIdRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedAdminRoute: AuthenticatedAdminRouteWithChildren,
+  AuthenticatedAiAssistantRoute: AuthenticatedAiAssistantRoute,
+  AuthenticatedAnalyticsRoute: AuthenticatedAnalyticsRoute,
+  AuthenticatedBookmarksRoute: AuthenticatedBookmarksRoute,
+  AuthenticatedCurrentAffairsRoute:
+    AuthenticatedCurrentAffairsRouteWithChildren,
   AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
+  AuthenticatedMainsRoute: AuthenticatedMainsRouteWithChildren,
   AuthenticatedNotesRoute: AuthenticatedNotesRoute,
   AuthenticatedOnboardingRoute: AuthenticatedOnboardingRoute,
+  AuthenticatedPlannerRoute: AuthenticatedPlannerRoute,
+  AuthenticatedPracticeRoute: AuthenticatedPracticeRouteWithChildren,
+  AuthenticatedProfileRoute: AuthenticatedProfileRoute,
+  AuthenticatedResourcesRoute: AuthenticatedResourcesRoute,
+  AuthenticatedSearchRoute: AuthenticatedSearchRoute,
   AuthenticatedSubjectsRoute: AuthenticatedSubjectsRouteWithChildren,
   AuthenticatedSyllabusRoute: AuthenticatedSyllabusRoute,
-  AuthenticatedTopicsRoute: AuthenticatedTopicsRoute,
+  AuthenticatedTestsRoute: AuthenticatedTestsRouteWithChildren,
+  AuthenticatedTopicsIdRoute: AuthenticatedTopicsIdRoute,
 }
 
 const AuthenticatedRouteRouteWithChildren =

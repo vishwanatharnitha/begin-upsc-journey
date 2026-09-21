@@ -7,7 +7,7 @@ import { DataBar } from "@/components/DataBar";
 import { PageHeader } from "@/components/PageHeader";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-export const Route = createFileRoute("/_authenticated/subjects/")({ head: () => pageMeta("Subject detail — BEGIN UPSC", "Review subject topics, progress, questions and resources."), component: SubjectDetail });
+export const Route = createFileRoute("/_authenticated/subjects/$id")({ head: () => pageMeta("Subject detail — BEGIN UPSC", "Review subject topics, progress, questions and resources."), component: SubjectDetail });
 
 function SubjectDetail() {
   const { id } = Route.useParams();
