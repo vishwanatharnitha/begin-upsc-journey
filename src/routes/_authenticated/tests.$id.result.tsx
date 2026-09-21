@@ -1,8 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
+import { Flag } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { pageMeta } from "@/lib/pageMeta";
+import { formatMinutes } from "@/lib/upsc";
 import { MetricCard } from "@/components/MetricCard";
+import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { PageHeader } from "@/components/PageHeader";
 
@@ -10,7 +13,7 @@ export const Route = createFileRoute("/_authenticated/tests/$id/result")({ head:
 
 function ResultPage() {
   const { id } = Route.useParams();
-  const attempt = useQuery({ queryKey: ["attempt", id], queryFn: async () => { const { data, error } = await supabase.from("test_attempts").select("id, score, accuracy, correct_answers, incorrect_answers, unanswered, total_questions, test_answers(selected_option, is_correct, questions(question_text, correct_option, explanation))").eq("id", id).maybeSingle(); if (error) throw error; return data; }});
+  const attempt = useQuery({ queryKey: ["attempt", id], queryFn: async () => { const { data, error } = await supabase.from("test_attempts").select("id, score, accuracy, correct_answers, incorrect_answers, unanswered, total_questions, time_spent, test_answers(selected_option, is_correct, marked_for_review, questions(question_text, correct_option, explanation))").eq("id", id).maybeSingle(); if (error) throw error; return data; }});
   const data = attempt.data;
-  return <div className="space-y-6"><PageHeader title="Test result" description="This analysis is based only on your saved answers." /><div className="grid gap-5 md:grid-cols-4"><MetricCard label="Score" value={String(data?.score ?? 0)} helper="Saved attempt" /><MetricCard label="Accuracy" value={`${Math.round(data?.accuracy ?? 0)}%`} /><MetricCard label="Correct" value={String(data?.correct_answers ?? 0)} /><MetricCard label="Unanswered" value={String(data?.unanswered ?? 0)} /></div><Card className="border-border/70"><CardHeader><CardTitle>Answer review</CardTitle></CardHeader><CardContent className="space-y-4">{data?.test_answers?.map((answer, index) => <div key={index} className="rounded-md border border-border/70 p-4"><p className="font-medium">{answer.questions?.question_text}</p><p className="mt-2 text-sm text-muted-foreground">Your answer: {answer.selected_option ?? "Unanswered"} · Correct: {answer.questions?.correct_option}</p><p className="mt-2 text-sm text-muted-foreground">{answer.questions?.explanation}</p></div>)}</CardContent></Card></div>;
+  return <div className="space-y-6"><PageHeader title="Test result" description="This analysis is based only on your saved answers." /><div className="grid gap-5 md:grid-cols-5"><MetricCard label="Score" value={String(data?.score ?? 0)} helper="Saved attempt" /><MetricCard label="Accuracy" value={`${Math.round(data?.accuracy ?? 0)}%`} /><MetricCard label="Correct" value={String(data?.correct_answers ?? 0)} /><MetricCard label="Unanswered" value={String(data?.unanswered ?? 0)} /><MetricCard label="Time" value={formatMinutes(Math.round((data?.time_spent ?? 0) / 60))} /></div><Card className="border-border/70"><CardHeader><CardTitle>Answer review</CardTitle></CardHeader><CardContent className="space-y-4">{data?.test_answers?.map((answer, index) => <div key={index} className="rounded-md border border-border/70 p-4"><div className="flex flex-wrap gap-2">{answer.is_correct ? <Badge>Correct</Badge> : <Badge variant="outline">Review</Badge>}{answer.marked_for_review ? <Badge variant="secondary"><Flag className="h-3 w-3" /> Marked</Badge> : null}</div><p className="mt-3 font-medium">{answer.questions?.question_text}</p><p className="mt-2 text-sm text-muted-foreground">Your answer: {answer.selected_option ?? "Unanswered"} · Correct: {answer.questions?.correct_option}</p><p className="mt-2 text-sm text-muted-foreground">{answer.questions?.explanation}</p></div>)}</CardContent></Card></div>;
 }

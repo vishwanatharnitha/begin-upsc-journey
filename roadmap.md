@@ -1,9 +1,7 @@
 # BEGIN UPSC Roadmap
 
-- [ ] Expand the database schema with roles, onboarding profile fields, hierarchical syllabus, content, practice tests, mains submissions, planner, bookmarks, analytics activity, resources, and notifications.
-- [ ] Enforce backend authorization with row-level access rules and admin-only content management.
-- [ ] Upgrade authentication pages for login, signup, forgot password, reset password, verification messaging, onboarding, session persistence, and sign-out.
-- [ ] Rework the public website into a premium responsive BEGIN UPSC landing experience with richer visual media.
-- [ ] Build the authenticated learner app: dashboard, syllabus/topics, subjects, current affairs, practice/tests, mains, planner, bookmarks, search, analytics, resources, profile, and AI assistant.
-- [ ] Build the admin area for users, questions, current affairs, syllabus, resources, mains, and settings.
-- [ ] Verify core flows, responsive layouts, error states, and metadata before completion.
+- [ ] Enforce onboarding completion and keep protected navigation consistent.
+- [ ] Finish learner flows: notes, current-affairs read/unread, MCQ timer/mark-for-review, Mains drafts/history, pagination, and working action buttons.
+- [ ] Finish admin CRUD actions: create, edit, publish/unpublish, delete/remove where expected, and role management.
+- [ ] Complete backend/database support for remaining user state with RLS-safe migrations.
+- [ ] Complete SEO assets/metadata and verify the live preview, core flows, and error states.

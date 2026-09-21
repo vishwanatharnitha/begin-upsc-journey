@@ -92,6 +92,41 @@ export type Database = {
         }
         Relationships: []
       }
+      current_affairs_reads: {
+        Row: {
+          created_at: string
+          current_affairs_id: string
+          id: string
+          read_at: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          current_affairs_id: string
+          id?: string
+          read_at?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          current_affairs_id?: string
+          id?: string
+          read_at?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "current_affairs_reads_current_affairs_id_fkey"
+            columns: ["current_affairs_id"]
+            isOneToOne: false
+            referencedRelation: "current_affairs"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       current_affairs_topics: {
         Row: {
           created_at: string
@@ -194,6 +229,7 @@ export type Database = {
           answer_text: string
           id: string
           question_id: string
+          status: string
           submitted_at: string
           time_spent: number
           updated_at: string
@@ -205,6 +241,7 @@ export type Database = {
           answer_text: string
           id?: string
           question_id: string
+          status?: string
           submitted_at?: string
           time_spent?: number
           updated_at?: string
@@ -216,6 +253,7 @@ export type Database = {
           answer_text?: string
           id?: string
           question_id?: string
+          status?: string
           submitted_at?: string
           time_spent?: number
           updated_at?: string
@@ -671,6 +709,7 @@ export type Database = {
           created_at: string
           id: string
           is_correct: boolean
+          marked_for_review: boolean
           question_id: string
           selected_option: string | null
           time_spent: number
@@ -680,6 +719,7 @@ export type Database = {
           created_at?: string
           id?: string
           is_correct?: boolean
+          marked_for_review?: boolean
           question_id: string
           selected_option?: string | null
           time_spent?: number
@@ -689,6 +729,7 @@ export type Database = {
           created_at?: string
           id?: string
           is_correct?: boolean
+          marked_for_review?: boolean
           question_id?: string
           selected_option?: string | null
           time_spent?: number

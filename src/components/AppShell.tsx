@@ -23,6 +23,7 @@ const learnerNav = [
   { to: "/dashboard", label: "Dashboard", icon: BarChart3 },
   { to: "/syllabus", label: "Syllabus", icon: Landmark },
   { to: "/subjects", label: "Subjects", icon: BookOpen },
+  { to: "/notes", label: "Notes", icon: NotebookText },
   { to: "/current-affairs", label: "Current Affairs", icon: Newspaper },
   { to: "/practice", label: "Practice", icon: Target },
   { to: "/tests", label: "Tests", icon: GraduationCap },
