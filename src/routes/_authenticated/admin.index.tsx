@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { PageHeader } from "@/components/PageHeader";
 
-export const Route = createFileRoute("/_authenticated/admin")({ head: () => pageMeta("Admin — BEGIN UPSC", "Role-protected admin overview for content and users."), component: AdminHome });
+export const Route = createFileRoute("/_authenticated/admin/")({ head: () => pageMeta("Admin — BEGIN UPSC", "Role-protected admin overview for content and users."), component: AdminHome });
 
 function AdminHome() {
   const { isAdmin } = Route.useRouteContext();
