@@ -34,7 +34,7 @@ const learnerNav = [
   { to: "/search", label: "Search", icon: Search },
   { to: "/ai-assistant", label: "AI Assistant", icon: Bot },
   { to: "/profile", label: "Profile", icon: UserRound },
-];
+] as const;
 
 const adminNav = [
   { to: "/admin", label: "Admin", icon: ShieldCheck },
@@ -45,7 +45,7 @@ const adminNav = [
   { to: "/admin/resources", label: "Resources", icon: Library },
   { to: "/admin/mains", label: "Mains", icon: NotebookText },
   { to: "/admin/settings", label: "Settings", icon: ShieldCheck },
-];
+] as const;
 
 export function AppShell({ user, isAdmin }: { user: User | null; isAdmin: boolean }) {
   const nav = isAdmin ? [...learnerNav, ...adminNav] : learnerNav;
