@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
-export const Route = createFileRoute("/_authenticated/topics/")({ head: () => pageMeta("Topic — BEGIN UPSC", "Review a syllabus topic, linked resources and saved progress."), component: TopicDetail });
+export const Route = createFileRoute("/_authenticated/topics/$id")({ head: () => pageMeta("Topic — BEGIN UPSC", "Review a syllabus topic, linked resources and saved progress."), component: TopicDetail });
 
 function TopicDetail() {
   const { id } = Route.useParams();
