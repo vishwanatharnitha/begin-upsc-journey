@@ -4,7 +4,7 @@ import { AppShell } from "@/components/AppShell";
 
 export const Route = createFileRoute("/_authenticated")({
   ssr: false,
-  beforeLoad: async () => {
+  beforeLoad: async ({ location }) => {
     const { data, error } = await supabase.auth.getUser();
     if (error || !data.user) throw redirect({ to: "/auth" });
 
@@ -17,6 +17,8 @@ export const Route = createFileRoute("/_authenticated")({
       .eq("id", data.user.id)
       .maybeSingle();
 
+    const onboardingCompleted = profile?.onboarding_completed ?? false;
+
     if (!profile) {
       await supabase.from("profiles").upsert({
         id: data.user.id,
@@ -27,7 +29,11 @@ export const Route = createFileRoute("/_authenticated")({
       await supabase.from("user_roles").upsert({ user_id: data.user.id, role: "user" });
     }
 
-    return { user: data.user, isAdmin, onboardingCompleted: profile?.onboarding_completed ?? false };
+    if (!onboardingCompleted && location.pathname !== "/onboarding") {
+      throw redirect({ to: "/onboarding" });
+    }
+
+    return { user: data.user, isAdmin, onboardingCompleted };
   },
   component: AuthenticatedLayout,
 });
