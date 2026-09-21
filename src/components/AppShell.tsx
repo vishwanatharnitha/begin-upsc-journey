@@ -15,6 +15,7 @@ import {
   Search,
   ShieldCheck,
   Target,
+  Timer,
   UserRound,
 } from "lucide-react";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -41,6 +42,7 @@ const adminNav = [
   { to: "/admin", label: "Admin", icon: ShieldCheck },
   { to: "/admin/users", label: "Users", icon: UserRound },
   { to: "/admin/questions", label: "Questions", icon: Target },
+  { to: "/admin/tests", label: "Tests", icon: Timer },
   { to: "/admin/current-affairs", label: "Affairs", icon: Newspaper },
   { to: "/admin/syllabus", label: "Syllabus", icon: Landmark },
   { to: "/admin/resources", label: "Resources", icon: Library },

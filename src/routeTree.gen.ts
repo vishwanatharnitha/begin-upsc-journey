@@ -39,6 +39,7 @@ import { Route as AuthenticatedAdminQuestionsRouteImport } from './routes/_authe
 import { Route as AuthenticatedAdminResourcesRouteImport } from './routes/_authenticated/admin/resources'
 import { Route as AuthenticatedAdminSettingsRouteImport } from './routes/_authenticated/admin/settings'
 import { Route as AuthenticatedAdminSyllabusRouteImport } from './routes/_authenticated/admin/syllabus'
+import { Route as AuthenticatedAdminTestsRouteImport } from './routes/_authenticated/admin/tests'
 import { Route as AuthenticatedAdminUsersRouteImport } from './routes/_authenticated/admin/users'
 import { Route as AuthenticatedCurrentAffairsIdRouteImport } from './routes/_authenticated/current-affairs.$id'
 import { Route as AuthenticatedMainsIdRouteImport } from './routes/_authenticated/mains.$id'
@@ -204,6 +205,11 @@ const AuthenticatedAdminSyllabusRoute =
     path: '/syllabus',
     getParentRoute: () => AuthenticatedAdminRoute,
   } as any)
+const AuthenticatedAdminTestsRoute = AuthenticatedAdminTestsRouteImport.update({
+  id: '/tests',
+  path: '/tests',
+  getParentRoute: () => AuthenticatedAdminRoute,
+} as any)
 const AuthenticatedAdminUsersRoute = AuthenticatedAdminUsersRouteImport.update({
   id: '/users',
   path: '/users',
@@ -277,6 +283,7 @@ export interface FileRoutesByFullPath {
   '/admin/resources': typeof AuthenticatedAdminResourcesRoute
   '/admin/settings': typeof AuthenticatedAdminSettingsRoute
   '/admin/syllabus': typeof AuthenticatedAdminSyllabusRoute
+  '/admin/tests': typeof AuthenticatedAdminTestsRoute
   '/admin/users': typeof AuthenticatedAdminUsersRoute
   '/current-affairs/$id': typeof AuthenticatedCurrentAffairsIdRoute
   '/mains/$id': typeof AuthenticatedMainsIdRoute
@@ -316,6 +323,7 @@ export interface FileRoutesByTo {
   '/admin/resources': typeof AuthenticatedAdminResourcesRoute
   '/admin/settings': typeof AuthenticatedAdminSettingsRoute
   '/admin/syllabus': typeof AuthenticatedAdminSyllabusRoute
+  '/admin/tests': typeof AuthenticatedAdminTestsRoute
   '/admin/users': typeof AuthenticatedAdminUsersRoute
   '/current-affairs/$id': typeof AuthenticatedCurrentAffairsIdRoute
   '/mains/$id': typeof AuthenticatedMainsIdRoute
@@ -357,6 +365,7 @@ export interface FileRoutesById {
   '/_authenticated/admin/resources': typeof AuthenticatedAdminResourcesRoute
   '/_authenticated/admin/settings': typeof AuthenticatedAdminSettingsRoute
   '/_authenticated/admin/syllabus': typeof AuthenticatedAdminSyllabusRoute
+  '/_authenticated/admin/tests': typeof AuthenticatedAdminTestsRoute
   '/_authenticated/admin/users': typeof AuthenticatedAdminUsersRoute
   '/_authenticated/current-affairs/$id': typeof AuthenticatedCurrentAffairsIdRoute
   '/_authenticated/mains/$id': typeof AuthenticatedMainsIdRoute
@@ -398,6 +407,7 @@ export interface FileRouteTypes {
     | '/admin/resources'
     | '/admin/settings'
     | '/admin/syllabus'
+    | '/admin/tests'
     | '/admin/users'
     | '/current-affairs/$id'
     | '/mains/$id'
@@ -437,6 +447,7 @@ export interface FileRouteTypes {
     | '/admin/resources'
     | '/admin/settings'
     | '/admin/syllabus'
+    | '/admin/tests'
     | '/admin/users'
     | '/current-affairs/$id'
     | '/mains/$id'
@@ -477,6 +488,7 @@ export interface FileRouteTypes {
     | '/_authenticated/admin/resources'
     | '/_authenticated/admin/settings'
     | '/_authenticated/admin/syllabus'
+    | '/_authenticated/admin/tests'
     | '/_authenticated/admin/users'
     | '/_authenticated/current-affairs/$id'
     | '/_authenticated/mains/$id'
@@ -709,6 +721,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminSyllabusRouteImport
       parentRoute: typeof AuthenticatedAdminRoute
     }
+    '/_authenticated/admin/tests': {
+      id: '/_authenticated/admin/tests'
+      path: '/tests'
+      fullPath: '/admin/tests'
+      preLoaderRoute: typeof AuthenticatedAdminTestsRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
     '/_authenticated/admin/users': {
       id: '/_authenticated/admin/users'
       path: '/users'
@@ -775,6 +794,7 @@ interface AuthenticatedAdminRouteChildren {
   AuthenticatedAdminResourcesRoute: typeof AuthenticatedAdminResourcesRoute
   AuthenticatedAdminSettingsRoute: typeof AuthenticatedAdminSettingsRoute
   AuthenticatedAdminSyllabusRoute: typeof AuthenticatedAdminSyllabusRoute
+  AuthenticatedAdminTestsRoute: typeof AuthenticatedAdminTestsRoute
   AuthenticatedAdminUsersRoute: typeof AuthenticatedAdminUsersRoute
 }
 
@@ -785,6 +805,7 @@ const AuthenticatedAdminRouteChildren: AuthenticatedAdminRouteChildren = {
   AuthenticatedAdminResourcesRoute: AuthenticatedAdminResourcesRoute,
   AuthenticatedAdminSettingsRoute: AuthenticatedAdminSettingsRoute,
   AuthenticatedAdminSyllabusRoute: AuthenticatedAdminSyllabusRoute,
+  AuthenticatedAdminTestsRoute: AuthenticatedAdminTestsRoute,
   AuthenticatedAdminUsersRoute: AuthenticatedAdminUsersRoute,
 }
 
