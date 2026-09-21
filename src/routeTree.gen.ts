@@ -40,6 +40,7 @@ import { Route as AuthenticatedAdminResourcesRouteImport } from './routes/_authe
 import { Route as AuthenticatedAdminSettingsRouteImport } from './routes/_authenticated/admin/settings'
 import { Route as AuthenticatedAdminSyllabusRouteImport } from './routes/_authenticated/admin/syllabus'
 import { Route as AuthenticatedAdminUsersRouteImport } from './routes/_authenticated/admin/users'
+import { Route as AuthenticatedCurrentAffairsRouteImport } from './routes/_authenticated/current-affairs.'
 import { Route as AuthenticatedCurrentAffairsIdRouteImport } from './routes/_authenticated/current-affairs.$id'
 import { Route as AuthenticatedMainsIdRouteImport } from './routes/_authenticated/mains.$id'
 import { Route as AuthenticatedPracticeIdRouteImport } from './routes/_authenticated/practice.$id'
@@ -209,6 +210,12 @@ const AuthenticatedAdminUsersRoute = AuthenticatedAdminUsersRouteImport.update({
   path: '/users',
   getParentRoute: () => AuthenticatedAdminRoute,
 } as any)
+const AuthenticatedCurrentAffairsRoute =
+  AuthenticatedCurrentAffairsRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => AuthenticatedCurrentAffairsRoute,
+  } as any)
 const AuthenticatedCurrentAffairsIdRoute =
   AuthenticatedCurrentAffairsIdRouteImport.update({
     id: '/$id',
@@ -271,6 +278,7 @@ export interface FileRoutesByFullPath {
   '/subjects': typeof AuthenticatedSubjectsRouteWithChildren
   '/syllabus': typeof AuthenticatedSyllabusRoute
   '/tests': typeof AuthenticatedTestsRouteWithChildren
+  '/current-affairs/': typeof AuthenticatedCurrentAffairsRoute
   '/admin/current-affairs': typeof AuthenticatedAdminCurrentAffairsRoute
   '/admin/mains': typeof AuthenticatedAdminMainsRoute
   '/admin/questions': typeof AuthenticatedAdminQuestionsRoute
@@ -297,7 +305,6 @@ export interface FileRoutesByTo {
   '/ai-assistant': typeof AuthenticatedAiAssistantRoute
   '/analytics': typeof AuthenticatedAnalyticsRoute
   '/bookmarks': typeof AuthenticatedBookmarksRoute
-  '/current-affairs': typeof AuthenticatedCurrentAffairsRouteWithChildren
   '/dashboard': typeof AuthenticatedDashboardRoute
   '/mains': typeof AuthenticatedMainsRouteWithChildren
   '/notes': typeof AuthenticatedNotesRoute
@@ -310,6 +317,7 @@ export interface FileRoutesByTo {
   '/subjects': typeof AuthenticatedSubjectsRouteWithChildren
   '/syllabus': typeof AuthenticatedSyllabusRoute
   '/tests': typeof AuthenticatedTestsRouteWithChildren
+  '/current-affairs': typeof AuthenticatedCurrentAffairsRoute
   '/admin/current-affairs': typeof AuthenticatedAdminCurrentAffairsRoute
   '/admin/mains': typeof AuthenticatedAdminMainsRoute
   '/admin/questions': typeof AuthenticatedAdminQuestionsRoute
@@ -351,6 +359,7 @@ export interface FileRoutesById {
   '/_authenticated/subjects': typeof AuthenticatedSubjectsRouteWithChildren
   '/_authenticated/syllabus': typeof AuthenticatedSyllabusRoute
   '/_authenticated/tests': typeof AuthenticatedTestsRouteWithChildren
+  '/_authenticated/current-affairs/': typeof AuthenticatedCurrentAffairsRoute
   '/_authenticated/admin/current-affairs': typeof AuthenticatedAdminCurrentAffairsRoute
   '/_authenticated/admin/mains': typeof AuthenticatedAdminMainsRoute
   '/_authenticated/admin/questions': typeof AuthenticatedAdminQuestionsRoute
@@ -392,6 +401,7 @@ export interface FileRouteTypes {
     | '/subjects'
     | '/syllabus'
     | '/tests'
+    | '/current-affairs/'
     | '/admin/current-affairs'
     | '/admin/mains'
     | '/admin/questions'
@@ -418,7 +428,6 @@ export interface FileRouteTypes {
     | '/ai-assistant'
     | '/analytics'
     | '/bookmarks'
-    | '/current-affairs'
     | '/dashboard'
     | '/mains'
     | '/notes'
@@ -431,6 +440,7 @@ export interface FileRouteTypes {
     | '/subjects'
     | '/syllabus'
     | '/tests'
+    | '/current-affairs'
     | '/admin/current-affairs'
     | '/admin/mains'
     | '/admin/questions'
@@ -471,6 +481,7 @@ export interface FileRouteTypes {
     | '/_authenticated/subjects'
     | '/_authenticated/syllabus'
     | '/_authenticated/tests'
+    | '/_authenticated/current-affairs/'
     | '/_authenticated/admin/current-affairs'
     | '/_authenticated/admin/mains'
     | '/_authenticated/admin/questions'
@@ -716,6 +727,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminUsersRouteImport
       parentRoute: typeof AuthenticatedAdminRoute
     }
+    '/_authenticated/current-affairs/': {
+      id: '/_authenticated/current-affairs/'
+      path: '/'
+      fullPath: '/current-affairs/'
+      preLoaderRoute: typeof AuthenticatedCurrentAffairsRouteImport
+      parentRoute: typeof AuthenticatedCurrentAffairsRoute
+    }
     '/_authenticated/current-affairs/$id': {
       id: '/_authenticated/current-affairs/$id'
       path: '/$id'
@@ -792,11 +810,13 @@ const AuthenticatedAdminRouteWithChildren =
   AuthenticatedAdminRoute._addFileChildren(AuthenticatedAdminRouteChildren)
 
 interface AuthenticatedCurrentAffairsRouteChildren {
+  AuthenticatedCurrentAffairsRoute: typeof AuthenticatedCurrentAffairsRoute
   AuthenticatedCurrentAffairsIdRoute: typeof AuthenticatedCurrentAffairsIdRoute
 }
 
 const AuthenticatedCurrentAffairsRouteChildren: AuthenticatedCurrentAffairsRouteChildren =
   {
+    AuthenticatedCurrentAffairsRoute: AuthenticatedCurrentAffairsRoute,
     AuthenticatedCurrentAffairsIdRoute: AuthenticatedCurrentAffairsIdRoute,
   }
 
