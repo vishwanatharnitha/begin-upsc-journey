@@ -153,7 +153,7 @@ function AuthPage() {
       <Card className="w-full max-w-md border-border/70 bg-card/95">
         {sentConfirmation || sentReset ? (
           <CardContent className="space-y-4 py-10 text-center">
-            <CardTitle className="text-xl">Check your email</CardTitle>
+            <h1 className="font-display text-xl font-semibold tracking-normal">Check your email</h1>
             <p className="text-sm text-muted-foreground">
               {sentConfirmation
                 ? "We sent a confirmation link. Open it to verify your account, then sign in."
@@ -173,7 +173,7 @@ function AuthPage() {
         ) : (
           <>
             <CardHeader>
-              <CardTitle className="text-2xl">{copy[0]}</CardTitle>
+              <h1 className="font-display text-2xl font-semibold tracking-normal">{copy[0]}</h1>
               <CardDescription>{copy[1]}</CardDescription>
             </CardHeader>
             <CardContent className="space-y-5">
