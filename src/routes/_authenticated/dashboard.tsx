@@ -129,7 +129,7 @@ function Dashboard() {
   const todayMinutes =
     sessions.data?.filter((s) => s.studied_on === todayKey).reduce((a, s) => a + s.minutes, 0) ?? 0;
 
-  const firstName = (user.user_metadata?.full_name as string | undefined)?.split(" ")[0];
+  const firstName = (user.user_metadata?.["full_name"] as string | undefined)?.split(" ")[0];
 
   return (
     <div className="space-y-8">
