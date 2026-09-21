@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { PageHeader } from "@/components/PageHeader";
 
-export const Route = createFileRoute("/_authenticated/current-affairs/")({
+export const Route = createFileRoute("/_authenticated/current-affairs/$id")({
   head: () => pageMeta("Current affairs detail — BEGIN UPSC", "Current affairs brief with Prelims and Mains relevance."),
   component: CurrentAffairsDetail,
 });
